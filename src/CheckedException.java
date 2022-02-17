@@ -2,14 +2,14 @@ import java.io.*;
 
 //Imprimir um arquivo no console.
 public class CheckedException {
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws IOException {
         String nomeDoArquivo = "lovecraft.txt";
         imprimirArquivoNoConsole(nomeDoArquivo);
 
         System.out.println("Apesar da exception ou não, o programa continua...");
     }
 
-    public static void imprimirArquivoNoConsole(String nomeDoArquivo) {
+    public static void imprimirArquivoNoConsole(String nomeDoArquivo) throws IOException {
         File file = new File(nomeDoArquivo);
 
         BufferedReader br = new BufferedReader(new FileReader(file.getName()));
@@ -20,9 +20,9 @@ public class CheckedException {
         do {
             bw.write(line);
             bw.newLine();
-            line=br.readLine();
-        }while(line != null);
+            line = br.readLine();
+        } while (line != null);
         bw.flush();
         br.close();
-
+    }
 }
