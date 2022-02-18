@@ -1,10 +1,22 @@
+import javax.swing.*;
 import java.io.*;
 
 //Imprimir um arquivo no console.
 public class CheckedException {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String nomeDoArquivo = "lovecraft.txt";
-        imprimirArquivoNoConsole(nomeDoArquivo);
+        try {
+            imprimirArquivoNoConsole(nomeDoArquivo);
+        }
+        catch(FileNotFoundException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Aconteceu um erro inesperado, contate o suporte: " + e.getCause());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Verifique o nome do arquivo e tente novamente: " + e.getCause());
+        }
+
 
         System.out.println("Apesar da exception ou não, o programa continua...");
     }
